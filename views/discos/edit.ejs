@@ -1,0 +1,27 @@
+<h2>Editar Álbum</h2>
+<form action="/discos/<%= disco.id %>/edit" method="POST" enctype="multipart/form-data">
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" name="titulo" value="<%= disco.titulo %>" required>
+    
+    <label for="dataLanc">Ano de Lançamento:</label>
+    <input type="number" id="dataLanc" name="dataLanc" value="<%= disco.dataLanc %>" required>
+    
+    <label for="artistaId">Artista:</label>
+    <select id="artistaId" name="artistaId">
+        <% artistas.forEach(artista => { %>
+            <option value="<%= artista.id %>" <%= disco.artistaId === artista.id ? 'selected' : '' %>><%= artista.nome %></option>
+        <% }); %>
+    </select>
+    
+    <label for="generoId">Gênero:</label>
+    <select id="generoId" name="generoId">
+        <% generos.forEach(genero => { %>
+            <option value="<%= genero.id %>" <%= disco.generoId === genero.id ? 'selected' : '' %>><%= genero.nome %></option>
+        <% }); %>
+    </select>
+    
+    <label for="capa">Capa:</label>
+    <input type="file" id="capa" name="capa" accept="image/*">
+    
+    <button type="submit">Salvar</button>
+</form>
