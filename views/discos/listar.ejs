@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Discos</title>
+    <title>Catálogo Musical</title>
     <link rel="stylesheet" href="/css/listarDisco.css">
 </head>
 <body>
@@ -12,7 +12,9 @@
         <a href="/">
             <img src="/images/logo.png" alt="Logo do Catálogo Musical">
         </a>
-        <h1>Catálogo Musical</h1>
+        <h1>Lista de Discos</h1>
+        <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back" onclick="window.location.href = '/';">
+
     </header>
 
     <!-- Main -->
@@ -21,13 +23,10 @@
         <section id="search">
             <h2>Pesquisar Discos</h2>
             <form action="/discos/search" method="GET">
-                <label for="titulo">Título:</label>
                 <input type="text" name="titulo" id="titulo" placeholder="Digite o título do disco">
 
-                <label for="artista">Artista:</label>
                 <input type="text" name="artista" id="artista" placeholder="Digite o nome do artista">
 
-                <label for="genero">Gênero:</label>
                 <input type="text" name="genero" id="genero" placeholder="Digite o gênero">
 
                 <button type="submit">Buscar</button>
@@ -41,7 +40,7 @@
 
         <!-- Grid de Discos -->
         <section id="disco-grid">
-            <h2>Discos Disponíveis</h2>
+            <h2>Discos Disponíveis:</h2>
             <div class="grid-container">
                 <% if (discos && discos.length > 0) { %>
                     <% discos.forEach(disco => { %>
@@ -68,6 +67,6 @@
             
             
         </section>
-    </main>
+    </main> 
 </body>
 </html>

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Gêneros</title>
+    <title>Catálogo Musical</title>
     <link rel="stylesheet" href="/css/listarGenero.css">
 </head>
 <body>
     <!-- Header -->
     <header>
-        <a href="/">
-            <img src="/images/logo.png" alt="Logo do Catálogo Musical">
-        </a>
-        <h1>Lista de Gêneros</h1>
+            <a href="/">
+                <img src="/images/logo.png" alt="Logo do Catálogo Musical">
+            </a>
+            <h1>Catálogo Musical</h1>
+            <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back" onclick="window.location.href = '/';">
+        
     </header>
+    
 
     <!-- Main -->
     <main>
@@ -21,7 +24,6 @@
         <section id="search">
             <h2>Pesquisar Gêneros</h2>
             <form action="/generos" method="GET">
-                <label for="nome">Nome:</label>
                 <input type="text" name="nome" id="nome" placeholder="Digite o nome do gênero">
                 <button type="submit">Buscar</button>
             </form>

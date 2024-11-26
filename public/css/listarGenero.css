@@ -11,6 +11,7 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #2d2a31;
+    overflow-x: hidden;
 }
 
 /* Navbar */
@@ -39,61 +40,124 @@ header h1 {
     margin: 15px;
 }
 
-main {
-    padding: 20px;
-}
-
-section {
-    margin-bottom: 20px;
-}
-
-form label {
-    font-weight: bold;
-}
-
-form input {
-    padding: 8px;
-    margin-right: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-form button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    background: #333;
-    color: white;
+header #back-button {
+    position: absolute;
+    right: 80px;
     cursor: pointer;
 }
 
-form button:hover {
-    background: #555;
+/* Conteúdo principal */
+main {
+    height: 86%;
+}
+
+/* Pesquisa */
+#search {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#search h2 {
+    margin: 15px;
+    color: white;
+}
+
+#search form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+#search input {
+    padding: 5px;
+    font-size: 16px;
+}
+
+#search button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#search button:hover {
+    background-color: #0056b3;
+}
+
+/* Botão Adicionar */
+#add-genero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#add-genero .btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+#add-genero .btn:hover {
+    background-color: #218838;
+}
+
+/* Grid de Discos */
+
+#genero-list h2 {
+    margin: 20px;
+    color: white;
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
 }
 
 .grid-item {
-    display: block;
-    padding: 15px;
+    display: block; /* Torna o <a> um elemento de bloco */
     border: 1px solid #ddd;
+    padding: 15px;
     border-radius: 5px;
+    background-color: #2f137a;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-    text-decoration: none;
-    color: #333;
-    transition: box-shadow 0.3s ease;
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: white; /* Herda a cor do texto */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .grid-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    transform: scale(1.05); /* Aumenta levemente o tamanho da box */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Realça a sombra ao passar o mouse */
 }
 
 .grid-item h3 {
+    font-size: 22px;
     margin: 0;
-    font-size: 18px;
+}
+
+.grid-item p {
+    margin: 10px;
+}
+
+.details-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.details-link:hover {
+    text-decoration: underline;
 }

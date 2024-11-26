@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Artista</title>
+    <title>Catálogo Musical</title>
     <link rel="stylesheet" href="/css/detalhesArtista.css">
 </head>
 <body>
@@ -12,7 +12,8 @@
         <a href="/">
             <img src="/images/logo.png" alt="Logo do Catálogo Musical">
         </a>
-        <h1>Detalhes do Artista</h1>
+        <h1>Catálogo Musical</h1>
+        <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back" onclick="window.location.href = '/artistas';">
     </header>
 
     <!-- Main -->
@@ -40,7 +41,7 @@
                         <% artista.discos.forEach(disco => { %>
                             <li>
                                 <a href="/discos/<%= disco.id %>">
-                                    <%= disco.titulo %> (<%= disco.data %>)
+                                    <%= disco.titulo %>
                                 </a>
                             </li>
                         <% }) %>
@@ -51,13 +52,13 @@
 
                 <!-- Botões -->
                 <div class="buttons">
-                    <a href="/artistas/<%= artista.id %>/edit" class="btn">Editar</a>
+                    <a href="/artistas/<%= artista.id %>/edit" class="btn editar">Editar</a>
                     <form action="/artistas/<%= artista.id %>/delete" method="POST" style="display:inline;">
-                        <button type="submit" class="btn delete">Excluir</button>
+                        <button type="submit" class="btn excluir">Excluir</button>
                     </form>
                 </div>
             </div>
         </div>
-    </main>
+    </main> 
 </body>
 </html>

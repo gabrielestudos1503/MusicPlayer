@@ -11,6 +11,7 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #2d2a31;
+    overflow-x: hidden;
 }
 
 /* Navbar */
@@ -39,14 +40,29 @@ header h1 {
     margin: 15px;
 }
 
+header #back-button {
+    position: absolute;
+    right: 80px;
+    cursor: pointer;
+}
+
 /* Conteúdo principal */
 main {
-    padding: 20px;
+    height: 86%;
 }
 
 /* Pesquisa */
 #search {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#search h2 {
+    margin: 15px;
+    color: white;
 }
 
 #search form {
@@ -75,6 +91,12 @@ main {
 }
 
 /* Botão Adicionar */
+#add-disco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #add-disco .btn {
     display: inline-block;
     padding: 10px 15px;
@@ -82,7 +104,7 @@ main {
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin: 20px;
 }
 
 #add-disco .btn:hover {
@@ -90,10 +112,21 @@ main {
 }
 
 /* Grid de Discos */
+
+#disco-grid h2 {
+    margin: 20px;
+    color: white;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
+}
+
+.grid-container img {
+    width: 100px;
+    margin: 20px;
 }
 
 .grid-item {
@@ -101,10 +134,11 @@ main {
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 5px;
+    background-color: #2f137a;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     text-decoration: none; /* Remove o sublinhado do link */
-    color: inherit; /* Herda a cor do texto */
+    color: white; /* Herda a cor do texto */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -113,9 +147,13 @@ main {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Realça a sombra ao passar o mouse */
 }
 
-
 .grid-item h3 {
+    font-size: 25px;
     margin: 0;
+}
+
+.grid-item p {
+    margin: 20px;
 }
 
 .details-link {

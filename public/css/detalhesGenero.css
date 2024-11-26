@@ -39,15 +39,29 @@ header h1 {
     margin: 15px;
 }
 
+header #back-button {
+    position: absolute;
+    right: 80px;
+    cursor: pointer;
+}
+
 main {
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
 }
 
+p, h1, h2, h3, li{
+    color: white;
+}
+
 #genero-info {
+    display: flex;
+    align-items: center;
+    height: 80px;
     text-align: center;
-    margin-bottom: 30px;
+    background-color: #403761;
+    position: relative;
 }
 
 .genero-header {
@@ -58,11 +72,10 @@ main {
 
 .genero-header h2 {
     font-size: 28px;
-    margin: 0;
+    margin: 0 30px;
 }
 
-.actions a,
-.actions button {
+.actions a, .actions button {
     padding: 8px 12px;
     border: none;
     border-radius: 4px;
@@ -74,40 +87,71 @@ main {
     margin-left: 5px;
 }
 
-.actions button.btn-danger {
-    background: #e74c3c;
+.actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.actions a:hover,
-.actions button:hover {
-    opacity: 0.8;
+.actions .btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.actions .btn.editar {
+    background-color: #007BFF;
+    bottom: 22px;
+    right: 120px;
+    position: absolute;
+}
+
+.actions .btn.excluir {
+    background-color: #FF4136;
+    right: 20px;
+    bottom: 22px;
+    position: absolute;
+}
+
+.actions .btn:hover {
+    opacity: 0.9;
 }
 
 #details {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
 }
 
-.left-box,
-.right-box {
+.left-box, .right-box {
+    width: 300px;
+    min-height: 400px;
     flex: 1;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    background-color: #403761;
     padding: 20px;
-    background: #f9f9f9;
 }
 
 h3 {
     margin: 0 0 10px;
 }
 
-ul {
+.left-box ul,
+.right-box ul {
     list-style: none;
-    padding: 0;
+    padding: 2px;
     margin: 0;
 }
 
-ul li {
-    margin-bottom: 8px;
+.left-box ul li,
+.right-box ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.left-box ul li:last-child,
+.right-box ul li:last-child {
+    border-bottom: none;
 }

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Artistas</title>
+    <title>Catálogo Musical</title>
     <link rel="stylesheet" href="/css/listarArtista.css">
 </head>
 <body>
@@ -13,6 +13,8 @@
             <img src="/images/logo.png" alt="Logo do Catálogo Musical">
         </a>
         <h1>Lista de Artistas</h1>
+        <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back" onclick="window.location.href = '/';">
+
     </header>
 
     <!-- Main -->
@@ -21,10 +23,8 @@
         <section id="search">
             <h2>Pesquisar Artistas</h2>
             <form action="/artistas" method="GET">
-                <label for="nome">Nome:</label>
                 <input type="text" name="nome" id="nome" placeholder="Digite o nome do artista">
 
-                <label for="genero">Gênero:</label>
                 <input type="text" name="genero" id="genero" placeholder="Digite o gênero">
 
                 <button type="submit">Buscar</button>
@@ -38,7 +38,7 @@
 
         <!-- Lista de Artistas -->
         <section id="artista-lista">
-            <h2>Artistas Disponíveis</h2>
+            <h2>Artistas Disponíveis:</h2>
             <div class="grid-container">
                 <% if (artistas && artistas.length > 0) { %>
                     <% artistas.forEach(artista => { %>
@@ -60,5 +60,10 @@
             </div>
         </section>
     </main>
+    <script>
+        document.getElementById('back-button').addEventListener('click', function () {
+            window.history.back();
+        });
+    </script>   
 </body>
 </html>

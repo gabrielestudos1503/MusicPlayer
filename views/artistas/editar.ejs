@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Artista</title>
+    <title>Catálogo Musical</title>
     <link rel="stylesheet" href="/css/adicionarArtista.css">
 </head>
 <body>
@@ -13,6 +13,7 @@
             <img src="/images/logo.png" alt="Logo do Catálogo Musical">
         </a>
         <h1>Editar Artista</h1>
+        <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back">
     </header>
 
     <!-- Main -->
@@ -48,5 +49,10 @@
             <button type="submit">Salvar Alterações</button>
         </form>
     </main>
+    <script>
+        document.getElementById('back-button').addEventListener('click', function () {
+            window.history.back();
+        });
+    </script>   
 </body>
 </html>

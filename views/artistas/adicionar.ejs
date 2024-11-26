@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Artista</title>
+    <title>Catálogo Musical</title>
     <link rel="stylesheet" href="/css/adicionarArtista.css">
 </head>
 <body>
@@ -12,7 +12,8 @@
         <a href="/">
             <img src="/images/logo.png" alt="Logo do Catálogo Musical">
         </a>
-        <h1>Adicionar Novo Artista</h1>
+        <h1>Catálogo Musical</h1>
+        <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back" onclick="window.location.href = '/artistas';">
     </header>
 
     <!-- Main -->
@@ -20,7 +21,7 @@
         <form action="/artistas/add" method="POST">
             <div>
                 <label for="nome">Nome do Artista:</label>
-                <input type="text" name="nome" id="nome" required>
+                <input type="text" name="nome" id="nome" placeholder="Insira um nome" required>
             </div>
 
             <div>
@@ -34,13 +35,13 @@
                             </div>
                         <% }) %>
                     <% } else { %>
-                        <p>Nenhum gênero disponível.</p>
+                        <p>Nenhum gênero disponível</p>
                     <% } %>
                 </div>
             </div>
 
             <button type="submit">Salvar Artista</button>
         </form>
-    </main>
+    </main> 
 </body>
 </html>

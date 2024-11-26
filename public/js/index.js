@@ -5,7 +5,7 @@ async function carregarRecentes(endpoint, containerId) {
         const container = document.getElementById(containerId);
         data.forEach(item => {
             const li = document.createElement('li');
-            li.textContent = item.nome || `${item.titulo} - ${item.data}`;
+            li.textContent = item.nome || `${item.titulo}`;
             container.appendChild(li);
         });
     } catch (error) {

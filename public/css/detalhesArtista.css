@@ -39,71 +39,88 @@ header h1 {
     margin: 15px;
 }
 
+header #back-button {
+    position: absolute;
+    right: 80px;
+    cursor: pointer;
+}
+
+p, h1, h2, h3, li{
+    color: white;
+}
+
 .details-container {
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    gap: 20px;
 }
 
 .info-box, .discos-box {
+    width: 300px;
+    min-height: 400px;
     flex: 1;
-    border: 1px solid #ddd;
     padding: 20px;
-    border-radius: 5px;
-    background: #f9f9f9;
+    background-color: #403761;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.info-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
 }
 
 h2 {
     margin-top: 0;
 }
 
-ul {
+.discos-box ul {
     list-style: none;
     padding: 0;
 }
 
-ul li {
-    margin: 5px 0;
+.discos-box ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
 }
 
-ul li a {
+.discos-box a {
     text-decoration: none;
-    color: #333;
-}
-
-ul li a:hover {
-    text-decoration: underline;
+    color: white;
 }
 
 .buttons {
     margin-top: 20px;
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
 }
 
 .buttons .btn {
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
-    text-decoration: none;
     color: #fff;
+    text-decoration: none;
     text-align: center;
     cursor: pointer;
 }
 
-.buttons .btn.delete {
-    background: #e74c3c;
+.buttons .btn.editar {
+    background-color: #007BFF;
+    bottom: 10px;
+    position: absolute;
 }
 
-.buttons .btn.delete:hover {
-    background: #c0392b;
-}
-
-.buttons .btn {
-    background: #333;
+.buttons .btn.excluir {
+    background-color: #FF4136;
+    bottom: 10px;
+    right: 20px;
+    position: absolute;
 }
 
 .buttons .btn:hover {
-    background: #555;
+    opacity: 0.9;
 }

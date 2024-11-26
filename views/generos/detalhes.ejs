@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Gênero</title>
+    <title>Catálogo Musical</title>
     <link rel="stylesheet" href="/css/detalhesGenero.css">
 </head>
 <body>
@@ -13,6 +13,8 @@
             <img src="/images/logo.png" alt="Logo do Catálogo Musical">
         </a>
         <h1>Detalhes do Gênero</h1>
+        <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back" onclick="window.location.href = '/generos';">
+
     </header>
 
     <!-- Main -->
@@ -22,9 +24,9 @@
             <div class="genero-header">
                 <h2><%= genero.nome %></h2>
                 <div class="actions">
-                    <a href="/generos/<%= genero.id %>/edit" class="btn">Editar</a>
+                    <a href="/generos/<%= genero.id %>/edit" class="btn editar">Editar</a>
                     <form action="/generos/<%= genero.id %>/delete" method="POST" style="display: inline;">
-                        <button type="submit" class="btn btn-danger">Excluir</button>
+                        <button type="submit" class="btn excluir">Excluir</button>
                     </form>
                 </div>
             </div>
@@ -57,6 +59,6 @@
                 <% } %>
             </div>
         </section>
-    </main>
+    </main> 
 </body>
 </html>

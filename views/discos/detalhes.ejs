@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Disco</title>
+    <title>Catálogo Musical</title>
     <link rel="stylesheet" href="/css/detalhesDisco.css">
 </head>
 <body>
@@ -12,6 +12,8 @@
             <img src="/images/logo.png" alt="Logo do Catálogo Musical">
         </a>
         <h1>Detalhes do Disco</h1>
+        <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back" onclick="window.location.href = '/discos';">
+
     </header>
 
     <main>
@@ -19,6 +21,9 @@
         <div class="container">
             <!-- Caixa da Esquerda: Informações Gerais -->
             <div class="info-box">
+                <% if (disco.capa) { %>
+                    <img src="<%= disco.capa %>" alt="Capa do Disco" class="capa">
+                <% } %>
                 <h2>Informações Gerais</h2>
                 <p><strong>Título:</strong> <%= disco.titulo %></p>
                 <p><strong>Artista:</strong> <%= disco.artista ? disco.artista.nome : 'Desconhecido' %></p>
@@ -30,9 +35,7 @@
                         Não especificado
                     <% } %>
                 </p>
-                <% if (disco.capa) { %>
-                    <img src="<%= disco.capa %>" alt="Capa do Disco" class="capa">
-                <% } %>
+                
             </div>
 
             <!-- Caixa da Direita: Lista de Faixas -->
@@ -57,6 +60,6 @@
                 </div>
             </div>
         </div>
-    </main>
+    </main>  
 </body>
 </html>

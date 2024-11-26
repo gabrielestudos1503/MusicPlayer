@@ -1,21 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Disco</title>
+    <title>Catálogo Musical</title>
     <link rel="stylesheet" href="/css/adicionarDisco.css">
 </head>
 <body>
     <header>
-        <a href="/discos">
+        <a href="/">
             <img src="/images/logo.png" alt="Logo do Catálogo Musical">
         </a>
-        <h1>Editar Disco</h1>
+        <h1>Catálogo Musical</h1>
+        <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back">
     </header>
 
     <main>
         <form action="/discos/<%= disco.id %>/edit" method="POST" enctype="multipart/form-data">
+
+            <div class="capa_disco">
+                <label for="capa">Capa do Disco:</label>
+                <input type="file" name="capa" id="capa" accept="image/*">
+                <% if (disco.capa) { %>
+                    <img src="<%= disco.capa %>" alt="Capa Atual" class="capa-atual">
+                <% } %>
+            </div>
+
             <div>
                 <label for="titulo">Título:</label>
                 <input type="text" name="titulo" id="titulo" value="<%= disco.titulo %>" required>
@@ -48,14 +58,6 @@
                         </div>
                     <% }) %>
                 </div>
-            </div>
-
-            <div>
-                <label for="capa">Capa do Disco:</label>
-                <input type="file" name="capa" id="capa" accept="image/*">
-                <% if (disco.capa) { %>
-                    <img src="<%= disco.capa %>" alt="Capa Atual" class="capa-atual">
-                <% } %>
             </div>
 
             <div>
