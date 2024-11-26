@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Gêneros</title>
+    <link rel="stylesheet" href="/css/listarGenero.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="/">
+            <img src="/images/logo.png" alt="Logo do Catálogo Musical">
+        </a>
+        <h1>Lista de Gêneros</h1>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <!-- Seção de Pesquisa -->
+        <section id="search">
+            <h2>Pesquisar Gêneros</h2>
+            <form action="/generos" method="GET">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" placeholder="Digite o nome do gênero">
+                <button type="submit">Buscar</button>
+            </form>
+        </section>
+
+        <!-- Botão para adicionar um novo gênero -->
+        <section id="add-genero">
+            <a href="/generos/add" class="btn">Adicionar Novo Gênero</a>
+        </section>
+
+        <!-- Lista de Gêneros -->
+        <section id="genero-list">
+            <h2>Gêneros Disponíveis</h2>
+            <div class="grid-container">
+                <% if (generos && generos.length > 0) { %>
+                    <% generos.forEach(genero => { %>
+                        <a href="/generos/<%= genero.id %>" class="grid-item">
+                            <h3><%= genero.nome %></h3>
+                        </a>
+                    <% }) %>
+                <% } else { %>
+                    <p>Nenhum gênero encontrado.</p>
+                <% } %>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

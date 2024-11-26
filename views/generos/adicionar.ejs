@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Gênero</title>
+    <link rel="stylesheet" href="/css/adicionarGenero.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="/">
+            <img src="/images/logo.png" alt="Logo do Catálogo Musical">
+        </a>
+        <h1>Adicionar Novo Gênero</h1>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <form action="/generos/add" method="POST">
+            <div class="form-group">
+                <label for="nome">Nome do Gênero:</label>
+                <input type="text" name="nome" id="nome" placeholder="Digite o nome do gênero" required>
+            </div>
+            <button type="submit" class="btn">Salvar Gênero</button>
+        </form>
+    </main>
+</body>
+</html>

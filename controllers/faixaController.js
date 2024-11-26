@@ -1,39 +1,82 @@
 const { Faixa, Disco } = require('../models');
 
 module.exports = {
-    list: async (req, res) => {
-        const discoId = req.params.discoId;
-        const faixas = await Faixa.findAll({ where: { discoId } });
-        res.render('faixas/list', { faixas, discoId });
+    
+    async listFaixas(req, res) {
+        try {
+            const { discoId } = req.params;
+            const disco = await Disco.findByPk(discoId, {
+                include: { model: Faixa, as: 'faixas' },
+            });
+
+            if (!disco) return res.status(404).send('Disco não encontrado.');
+
+            res.render('faixas/listar', { faixas: disco.faixas, disco });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Erro ao listar as faixas.');
+        }
     },
 
-    createForm: async (req, res) => {
-        const discoId = req.params.discoId;
-        res.render('faixas/create', { discoId });
+    async addFaixa(req, res) {
+        try {
+            const { discoId } = req.params;
+            const { titulo, duracao } = req.body;
+
+            const disco = await Disco.findByPk(discoId);
+            if (!disco) return res.status(404).send('Disco não encontrado.');
+
+            await Faixa.create({ titulo, duracao, discoId });
+            res.redirect(`/faixas/${discoId}`);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Erro ao adicionar a faixa.');
+        }
     },
 
-    create: async (req, res) => {
-        const { titulo, duracao } = req.body;
-        const discoId = req.params.discoId;
-        await Faixa.create({ titulo, duracao, discoId });
-        res.redirect(`/discos/${discoId}`);
+    async editFaixaForm(req, res) {
+        try {
+            const { id } = req.params;
+            const faixa = await Faixa.findByPk(id);
+
+            if (!faixa) return res.status(404).send('Faixa não encontrada.');
+
+            res.render('faixas/editar', { faixa });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Erro ao carregar o formulário de edição.');
+        }
     },
 
-    editForm: async (req, res) => {
-        const faixa = await Faixa.findByPk(req.params.id);
-        res.render('faixas/edit', { faixa });
+    async editFaixa(req, res) {
+        try {
+            const { id } = req.params;
+            const { titulo, duracao } = req.body;
+
+            const faixa = await Faixa.findByPk(id);
+            if (!faixa) return res.status(404).send('Faixa não encontrada.');
+
+            await faixa.update({ titulo, duracao });
+            res.redirect(`/faixas/${faixa.discoId}`);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Erro ao editar a faixa.');
+        }
     },
 
-    edit: async (req, res) => {
-        const { titulo, duracao } = req.body;
-        await Faixa.update({ titulo, duracao }, { where: { id: req.params.id } });
-        const faixa = await Faixa.findByPk(req.params.id);
-        res.redirect(`/discos/${faixa.discoId}`);
-    },
+    async deleteFaixa(req, res) {
+        try {
+            const { id } = req.params;
 
-    delete: async (req, res) => {
-        const faixa = await Faixa.findByPk(req.params.id);
-        await Faixa.destroy({ where: { id: req.params.id } });
-        res.redirect(`/discos/${faixa.discoId}`);
+            const faixa = await Faixa.findByPk(id);
+            if (!faixa) return res.status(404).send('Faixa não encontrada.');
+
+            const discoId = faixa.discoId;
+            await faixa.destroy();
+            res.redirect(`/faixas/${discoId}`);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Erro ao excluir a faixa.');
+        }
     },
 };

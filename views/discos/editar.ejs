@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Disco</title>
+    <link rel="stylesheet" href="/css/adicionarDisco.css">
+</head>
+<body>
+    <header>
+        <a href="/discos">
+            <img src="/images/logo.png" alt="Logo do Catálogo Musical">
+        </a>
+        <h1>Editar Disco</h1>
+    </header>
+
+    <main>
+        <form action="/discos/<%= disco.id %>/edit" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="titulo">Título:</label>
+                <input type="text" name="titulo" id="titulo" value="<%= disco.titulo %>" required>
+            </div>
+
+            <div>
+                <label for="data">Ano de Lançamento:</label>
+                <input type="number" name="data" id="data" value="<%= disco.data %>" required>
+            </div>
+
+            <div>
+                <label for="artistaId">Artista:</label>
+                <select name="artistaId" id="artistaId" required>
+                    <% artistas.forEach(artista => { %>
+                        <option value="<%= artista.id %>" <%= artista.id === disco.artistaId ? 'selected' : '' %>>
+                            <%= artista.nome %>
+                        </option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <div>
+                <label for="generoIds">Gêneros:</label>
+                <div class="checkbox-container">
+                    <% generos.forEach(genero => { %>
+                        <div>
+                            <input type="checkbox" name="generoIds" value="<%= genero.id %>"
+                                id="genero-<%= genero.id %>" <%= disco.generos.map(g => g.id).includes(genero.id) ? 'checked' : '' %>>
+                            <label for="genero-<%= genero.id %>"><%= genero.nome %></label>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+
+            <div>
+                <label for="capa">Capa do Disco:</label>
+                <input type="file" name="capa" id="capa" accept="image/*">
+                <% if (disco.capa) { %>
+                    <img src="<%= disco.capa %>" alt="Capa Atual" class="capa-atual">
+                <% } %>
+            </div>
+
+            <div>
+                <label>Faixas:</label>
+                <!-- Lista dinâmica de faixas adicionadas -->
+                <ul id="faixa-lista">
+                    <% if (disco.faixas && disco.faixas.length > 0) { %>
+                        <% disco.faixas.forEach((faixa, index) => { %>
+                            <li data-index="<%= index %>">
+                                <span><%= faixa.titulo %> (<%= faixa.duracao || 'Sem duração' %>)</span>
+                                <button type="button" class="btn-excluir" data-index="<%= index %>">Excluir</button>
+                                <input type="hidden" name="faixas" value='<%= JSON.stringify(faixa) %>'>
+                            </li>
+                        <% }) %>
+                    <% } %>
+                </ul>
+            
+                <!-- Campos para adicionar uma nova faixa -->
+                <div class="faixa-inputs">
+                    <input type="text" id="faixa-titulo" placeholder="Título da faixa">
+                    <input type="text" id="faixa-duracao" placeholder="Duração (mm:ss)">
+                    <button type="button" id="add-faixa-btn">Adicionar Faixa</button>
+                </div>
+            </div>
+
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </main>
+    <script src="/js/editarDisco.js"></script>
+</body>
+</html>

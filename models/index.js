@@ -1,16 +1,32 @@
-const sequelize = require('../config/database');
-const Artista = require('./artistaModel');
-const Disco = require('./discoModel');
-const Genero = require('./generoModel');
-const Faixa = require('./faixaModel');
+'use strict';
 
-Disco.belongsTo(Artista, { foreignKey: 'artistaId', onDelete: 'CASCADE' });
-Disco.belongsTo(Genero, { foreignKey: 'generoId', onDelete: 'CASCADE' });
-Disco.hasMany(Faixa, { foreignKey: 'discoId', onDelete: 'CASCADE' });
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+const basename = path.basename(__filename);
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
+const db = {};
 
-Artista.hasMany(Disco, { foreignKey: 'artistaId' });
-Genero.hasMany(Disco, { foreignKey: 'generoId' });
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-Faixa.belongsTo(Disco, { foreignKey: 'discoId' });
+fs
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+  })
+  .forEach(file => {
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    db[model.name] = model;
+  });
 
-module.exports = { sequelize, Artista, Disco, Genero, Faixa };
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;

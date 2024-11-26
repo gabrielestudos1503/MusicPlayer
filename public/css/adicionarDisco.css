@@ -1,0 +1,156 @@
+*{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2d2a31;
+}
+
+/* Navbar */
+header {
+    width: 100%;
+    height: 14%;
+    background-color: #2f137a;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header a {
+    left: 80px;
+    position: absolute;
+}
+
+header img {
+    height: 60px;
+}
+
+header h1 {
+    margin: 15px;
+}
+
+main {
+    padding: 20px;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form input, form select, form textarea, form button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+.checkbox-container {
+    max-height: 120px; /* Mostra no máximo 4 itens visíveis (30px cada) */
+    overflow-y: auto; /* Adiciona o scroll vertical */
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Lista de faixas */
+#faixa-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-height: 150px; /* Altura máxima para a lista */
+    overflow-y: auto; /* Adiciona scroll quando necessário */
+}
+
+#faixa-lista li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#faixa-lista li:last-child {
+    border-bottom: none;
+}
+
+#faixa-lista li button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+#faixa-lista li button:hover {
+    background-color: #c82333;
+}
+
+/* Inputs e botão para adicionar faixas */
+.faixa-inputs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.faixa-inputs input {
+    padding: 5px;
+    font-size: 16px;
+    flex: 1;
+}
+
+.faixa-inputs button {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.faixa-inputs button:hover {
+    background-color: #218838;
+}
+
+.capa-atual {
+    max-width: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: block;
+}

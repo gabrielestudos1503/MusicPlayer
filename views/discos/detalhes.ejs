@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Disco</title>
+    <link rel="stylesheet" href="/css/detalhesDisco.css">
+</head>
+<body>
+    <header>
+        <a href="/discos">
+            <img src="/images/logo.png" alt="Logo do Catálogo Musical">
+        </a>
+        <h1>Detalhes do Disco</h1>
+    </header>
+
+    <main>
+        <!-- Container das duas caixas -->
+        <div class="container">
+            <!-- Caixa da Esquerda: Informações Gerais -->
+            <div class="info-box">
+                <h2>Informações Gerais</h2>
+                <p><strong>Título:</strong> <%= disco.titulo %></p>
+                <p><strong>Artista:</strong> <%= disco.artista ? disco.artista.nome : 'Desconhecido' %></p>
+                <p><strong>Ano:</strong> <%= disco.data %></p>
+                <p><strong>Gêneros:</strong> 
+                    <% if (disco.generos && disco.generos.length > 0) { %>
+                        <%= disco.generos.map(g => g.nome).join(', ') %>
+                    <% } else { %>
+                        Não especificado
+                    <% } %>
+                </p>
+                <% if (disco.capa) { %>
+                    <img src="<%= disco.capa %>" alt="Capa do Disco" class="capa">
+                <% } %>
+            </div>
+
+            <!-- Caixa da Direita: Lista de Faixas -->
+            <div class="faixas-box">
+                <h2>Faixas</h2>
+                <% if (disco.faixas && disco.faixas.length > 0) { %>
+                    <ul>
+                        <% disco.faixas.forEach(faixa => { %>
+                            <li><%= faixa.titulo %> (<%= faixa.duracao || 'Sem duração' %>)</li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>Nenhuma faixa disponível.</p>
+                <% } %>
+
+                <!-- Botões -->
+                <div class="botoes">
+                    <a href="/discos/<%= disco.id %>/edit" class="btn editar">Editar</a>
+                    <form action="/discos/<%= disco.id %>/delete" method="POST" class="delete-form">
+                        <button type="submit" class="btn excluir">Excluir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

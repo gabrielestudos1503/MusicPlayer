@@ -1,15 +1,24 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+    const Faixa = sequelize.define('Faixa', {
+        titulo: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        duracao: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+    }, {
+        tableName: 'Faixas',
+    });
 
-const Faixa = sequelize.define('Faixa', {
-    titulo: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    duracao: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-});
+    Faixa.associate = function(models) {
+        Faixa.belongsTo(models.Disco, {
+            foreignKey: 'discoId',
+            as: 'disco',
+        });
+    };
 
-module.exports = Faixa;
+    return Faixa;
+};

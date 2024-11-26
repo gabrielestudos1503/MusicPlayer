@@ -1,24 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Discos</title>
-    <link rel="stylesheet" href="/css/style.css"> <!-- Se você tiver algum CSS -->
+    <title>Music Catalog</title>
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
     <header>
-        <h1>Bem-vindo ao Catálogo de Discos</h1>
-        <nav>
-            <ul>
-                <li><a href="/discos">Discos</a></li>
-                <li><a href="/artistas">Artistas</a></li>
-                <li><a href="/generos">Gêneros</a></li>
-            </ul>
-        </nav>
+        <a href="/">
+            <img src="/images/logo.png" alt="Logo do Catálogo Musical">
+        </a>
+        <h1>Catálogo Musical</h1>
     </header>
+
     <main>
-        <h2>Explore os discos disponíveis no catálogo!</h2>
+        <section>
+            <h2><a href="/discos">Discos</a></h2>
+            <ul id="discos-recentes"></ul> 
+        </section>
+
+        <section>
+            <h2><a href="/artistas">Artistas</a></h2>
+            <ul id="artistas-recentes"></ul> 
+        </section>
+
+        <section>
+            <h2><a href="/generos">Gêneros</a></h2>
+            <ul id="generos-recentes"></ul>
+        </section>
     </main>
+
+    <script src="/js/index.js"></script>
 </body>
 </html>

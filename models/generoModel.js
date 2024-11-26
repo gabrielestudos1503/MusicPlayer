@@ -1,11 +1,26 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+    const Genero = sequelize.define('Genero', {
+        nome: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+    }, {
+        tableName: 'Generos',
+    });
 
-const Genero = sequelize.define('Genero', {
-    nome: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-});
+    Genero.associate = function(models) {
+        Genero.belongsToMany(models.Disco, {
+            through: 'DiscoGeneros',
+            as: 'discos',
+            foreignKey: 'generoId',
+        });
+        Genero.belongsToMany(models.Artista, {
+            through: 'ArtistaGeneros', // Nome da tabela intermediária
+            as: 'artistas',
+            foreignKey: 'generoId',
+        });
+    };
 
-module.exports = Genero;
+    return Genero;
+};

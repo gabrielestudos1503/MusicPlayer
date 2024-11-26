@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Disco</title>
+    <link rel="stylesheet" href="/css/adicionarDisco.css">
+</head>
+<body>
+    <header>
+        <a href="/">
+            <img src="/images/logo.png" alt="Logo do Catálogo Musical">
+        </a>
+        <h1>Adicionar Novo Disco</h1>
+    </header>
+
+    <main>
+        <form action="/discos/add" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="capa">Capa do Disco:</label>
+                <input type="file" name="capa" id="capa" accept="image/*">
+            </div>
+            <div>
+                <label for="titulo">Título:</label>
+                <input type="text" name="titulo" id="titulo" required>
+            </div>
+
+            <div>
+                <label for="data">Ano de Lançamento:</label>
+                <input type="number" name="data" id="data" required>
+            </div>
+
+            <div>
+                <label for="artistaId">Artista:</label>
+                <select name="artistaId" id="artistaId" required>
+                    <% if (artistas && artistas.length > 0) { %>
+                        <% artistas.forEach(artista => { %>
+                            <option value="<%= artista.id %>"><%= artista.nome %></option>
+                        <% }) %>
+                    <% } else { %>
+                        <option value="">Nenhum artista disponível</option>
+                    <% } %>
+                </select>
+            </div>
+
+            <div>
+                <label for="generoIds">Gêneros:</label>
+                <div class="checkbox-container">
+                    <% if (generos && generos.length > 0) { %>
+                        <% generos.forEach(genero => { %>
+                            <div>
+                                <input type="checkbox" name="generoIds" value="<%= genero.id %>" id="genero-<%= genero.id %>">
+                                <label for="genero-<%= genero.id %>"><%= genero.nome %></label>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <p>Nenhum gênero disponível</p>
+                    <% } %>
+                </div>
+            </div>
+
+            <div>
+                <label>Faixas:</label>
+                <ul id="faixa-lista"></ul> <!-- Lista dinâmica de faixas adicionadas -->
+            
+                <div class="faixa-inputs">
+                    <input type="text" id="faixa-titulo" placeholder="Título da faixa">
+                    <input type="text" id="faixa-duracao" placeholder="Duração (mm:ss)">
+                    <button type="button" id="add-faixa-btn">Adicionar Faixa</button>
+                </div>
+            </div>
+
+            <button type="submit">Salvar Disco</button>
+        </form>
+    </main>
+    <script src="/js/adicionarDisco.js"></script>
+</body>
+</html>

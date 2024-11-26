@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Discos</title>
+    <link rel="stylesheet" href="/css/listarDisco.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="/">
+            <img src="/images/logo.png" alt="Logo do Catálogo Musical">
+        </a>
+        <h1>Catálogo Musical</h1>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <!-- Seção de Pesquisa -->
+        <section id="search">
+            <h2>Pesquisar Discos</h2>
+            <form action="/discos/search" method="GET">
+                <label for="titulo">Título:</label>
+                <input type="text" name="titulo" id="titulo" placeholder="Digite o título do disco">
+
+                <label for="artista">Artista:</label>
+                <input type="text" name="artista" id="artista" placeholder="Digite o nome do artista">
+
+                <label for="genero">Gênero:</label>
+                <input type="text" name="genero" id="genero" placeholder="Digite o gênero">
+
+                <button type="submit">Buscar</button>
+            </form>
+        </section>
+
+        <!-- Botão para adicionar um novo disco -->
+        <section id="add-disco">
+            <a href="/discos/add" class="btn">Adicionar Novo Disco</a>
+        </section>
+
+        <!-- Grid de Discos -->
+        <section id="disco-grid">
+            <h2>Discos Disponíveis</h2>
+            <div class="grid-container">
+                <% if (discos && discos.length > 0) { %>
+                    <% discos.forEach(disco => { %>
+                        <a href="/discos/<%= disco.id %>" class="grid-item">
+                            <% if (disco.capa) { %>
+                                <img src="<%= disco.capa %>" alt="Capa de <%= disco.titulo %>">
+                            <% } %>
+                            <h3><%= disco.titulo %></h3>
+                            <p><strong>Artista:</strong> <%= disco.artista ? disco.artista.nome : 'Desconhecido' %></p>
+                            <p><strong>Ano:</strong> <%= disco.data %></p>
+                            <p><strong>Gêneros:</strong>
+                                <% if (disco.generos && disco.generos.length > 0) { %>
+                                    <%= disco.generos.map(genero => genero.nome).join(', ') %>
+                                <% } else { %>
+                                    Não especificado
+                                <% } %>
+                            </p>
+                        </a>
+                    <% }) %>
+                <% } else { %>
+                    <p>Nenhum disco encontrado.</p>
+                <% } %>
+            </div>
+            
+            
+        </section>
+    </main>
+</body>
+</html>

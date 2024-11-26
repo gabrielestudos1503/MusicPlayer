@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Gênero</title>
+    <link rel="stylesheet" href="/css/detalhesGenero.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="/">
+            <img src="/images/logo.png" alt="Logo do Catálogo Musical">
+        </a>
+        <h1>Detalhes do Gênero</h1>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <!-- Nome do Gênero e Ações -->
+        <section id="genero-info">
+            <div class="genero-header">
+                <h2><%= genero.nome %></h2>
+                <div class="actions">
+                    <a href="/generos/<%= genero.id %>/edit" class="btn">Editar</a>
+                    <form action="/generos/<%= genero.id %>/delete" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Listas de Artistas e Discos -->
+        <section id="details">
+            <div class="left-box">
+                <h3>Artistas Associados</h3>
+                <% if (genero.artistas && genero.artistas.length > 0) { %>
+                    <ul>
+                        <% genero.artistas.forEach(artista => { %>
+                            <li><%= artista.nome %></li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>Nenhum artista associado.</p>
+                <% } %>
+            </div>
+            <div class="right-box">
+                <h3>Discos Associados</h3>
+                <% if (genero.discos && genero.discos.length > 0) { %>
+                    <ul>
+                        <% genero.discos.forEach(disco => { %>
+                            <li><%= disco.titulo %> (<%= disco.data %>)</li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>Nenhum disco associado.</p>
+                <% } %>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

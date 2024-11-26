@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Artista</title>
+    <link rel="stylesheet" href="/css/adicionarArtista.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="/">
+            <img src="/images/logo.png" alt="Logo do Catálogo Musical">
+        </a>
+        <h1>Adicionar Novo Artista</h1>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <form action="/artistas/add" method="POST">
+            <div>
+                <label for="nome">Nome do Artista:</label>
+                <input type="text" name="nome" id="nome" required>
+            </div>
+
+            <div>
+                <label for="generoIds">Gêneros:</label>
+                <div class="checkbox-container">
+                    <% if (generos && generos.length > 0) { %>
+                        <% generos.forEach(genero => { %>
+                            <div>
+                                <input type="checkbox" name="generoIds" value="<%= genero.id %>" id="genero-<%= genero.id %>">
+                                <label for="genero-<%= genero.id %>"><%= genero.nome %></label>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <p>Nenhum gênero disponível.</p>
+                    <% } %>
+                </div>
+            </div>
+
+            <button type="submit">Salvar Artista</button>
+        </form>
+    </main>
+</body>
+</html>

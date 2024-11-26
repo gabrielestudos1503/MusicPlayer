@@ -1,0 +1,109 @@
+*{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2d2a31;
+}
+
+/* Navbar */
+header {
+    width: 100%;
+    height: 14%;
+    background-color: #2f137a;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header a {
+    left: 80px;
+    position: absolute;
+}
+
+header img {
+    height: 60px;
+}
+
+header h1 {
+    margin: 15px;
+}
+
+.details-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+}
+
+.info-box, .discos-box {
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 5px 0;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.buttons .btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.buttons .btn.delete {
+    background: #e74c3c;
+}
+
+.buttons .btn.delete:hover {
+    background: #c0392b;
+}
+
+.buttons .btn {
+    background: #333;
+}
+
+.buttons .btn:hover {
+    background: #555;
+}

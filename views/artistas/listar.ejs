@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Artistas</title>
+    <link rel="stylesheet" href="/css/listarArtista.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="/">
+            <img src="/images/logo.png" alt="Logo do Catálogo Musical">
+        </a>
+        <h1>Lista de Artistas</h1>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <!-- Seção de Pesquisa -->
+        <section id="search">
+            <h2>Pesquisar Artistas</h2>
+            <form action="/artistas" method="GET">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" placeholder="Digite o nome do artista">
+
+                <label for="genero">Gênero:</label>
+                <input type="text" name="genero" id="genero" placeholder="Digite o gênero">
+
+                <button type="submit">Buscar</button>
+            </form>
+        </section>
+
+        <!-- Botão para adicionar um novo artista -->
+        <section id="add-artista">
+            <a href="/artistas/add" class="btn">Adicionar Novo Artista</a>
+        </section>
+
+        <!-- Lista de Artistas -->
+        <section id="artista-lista">
+            <h2>Artistas Disponíveis</h2>
+            <div class="grid-container">
+                <% if (artistas && artistas.length > 0) { %>
+                    <% artistas.forEach(artista => { %>
+                        <a href="/artistas/<%= artista.id %>" class="grid-item">
+                            <h3><%= artista.nome %></h3>
+                            <p><strong>Gêneros:</strong>
+                                <% if (artista.generos && artista.generos.length > 0) { %>
+                                    <%= artista.generos.map(genero => genero.nome).join(', ') %>
+                                <% } else { %>
+                                    Não especificado
+                                <% } %>
+                            </p>
+                            <p><strong>Discos:</strong> <%= artista.discos.length %></p>
+                        </a>
+                    <% }) %>
+                <% } else { %>
+                    <p>Nenhum artista encontrado.</p>
+                <% } %>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

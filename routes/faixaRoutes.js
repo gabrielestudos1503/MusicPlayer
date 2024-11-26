@@ -1,12 +1,14 @@
 const express = require('express');
-const faixaController = require('../controllers/faixaController');
 const router = express.Router();
+const faixaController = require('../controllers/faixaController');
 
-router.get('/disco/:discoId', faixaController.list);
-router.get('/disco/:discoId/create', faixaController.createForm);
-router.post('/disco/:discoId/create', faixaController.create);
-router.get('/:id/edit', faixaController.editForm);
-router.post('/:id/edit', faixaController.edit);
-router.post('/:id/delete', faixaController.delete);
+router.get('/:discoId', faixaController.listFaixas);
+
+router.post('/:discoId/add', faixaController.addFaixa);
+
+router.get('/:id/edit', faixaController.editFaixaForm);
+router.post('/:id/edit', faixaController.editFaixa);
+
+router.post('/:id/delete', faixaController.deleteFaixa);
 
 module.exports = router;

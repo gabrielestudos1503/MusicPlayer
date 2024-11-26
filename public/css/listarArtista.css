@@ -1,0 +1,96 @@
+*{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2d2a31;
+}
+
+/* Navbar */
+header {
+    width: 100%;
+    height: 14%;
+    background-color: #2f137a;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header a {
+    left: 80px;
+    position: absolute;
+}
+
+header img {
+    height: 60px;
+}
+
+header h1 {
+    margin: 15px;
+}
+
+#search {
+    padding: 20px;
+}
+
+#search form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#search label {
+    font-weight: bold;
+}
+
+#add-artista {
+    margin: 20px;
+}
+
+#add-artista .btn {
+    background: #333;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#artista-lista {
+    padding: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.grid-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    background: #f9f9f9;
+}
+
+.grid-item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+}
