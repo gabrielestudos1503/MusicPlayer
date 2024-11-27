@@ -125,21 +125,21 @@ main {
 }
 
 .grid-item {
-    display: block; /* Torna o <a> um elemento de bloco */
+    display: block; 
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 5px;
     background-color: #2f137a;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-    text-decoration: none; /* Remove o sublinhado do link */
-    color: white; /* Herda a cor do texto */
+    text-decoration: none; 
+    color: white; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .grid-item:hover {
-    transform: scale(1.05); /* Aumenta levemente o tamanho da box */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Realça a sombra ao passar o mouse */
+    transform: scale(1.05); 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
 }
 
 .grid-item h3 {

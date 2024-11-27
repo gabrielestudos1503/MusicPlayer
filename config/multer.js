@@ -1,10 +1,9 @@
 const multer = require('multer');
 const path = require('path');
 
-// Configuração do armazenamento
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '../public/uploads')); // Diretório onde os arquivos serão salvos
+        cb(null, path.join(__dirname, '../public/uploads'));
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
@@ -12,11 +11,10 @@ const storage = multer.diskStorage({
     },
 });
 
-// Filtragem de arquivos (opcional)
 const fileFilter = (req, file, cb) => {
     const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
     if (allowedTypes.includes(file.mimetype)) {
-        cb(null, true); // Aceita o arquivo
+        cb(null, true);
     } else {
         cb(new Error('Tipo de arquivo inválido. Apenas JPG, PNG e GIF são permitidos.'));
     }
@@ -32,7 +30,7 @@ const upload = multer({
             cb(new Error('Arquivo inválido. Apenas imagens são permitidas.'));
         }
     },
-    limits: { fileSize: 5 * 1024 * 1024 }, // Limite de 5MB
+    limits: { fileSize: 5 * 1024 * 1024 },
 });
 
 module.exports = upload;

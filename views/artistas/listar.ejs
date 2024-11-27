@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/css/listarArtista.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <a href="/">
             <img src="/images/logo.png" alt="Logo do Catálogo Musical">
@@ -16,10 +15,7 @@
         <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back" onclick="window.location.href = '/';">
 
     </header>
-
-    <!-- Main -->
     <main>
-        <!-- Seção de Pesquisa -->
         <section id="search">
             <h2>Pesquisar Artistas</h2>
             <form action="/artistas" method="GET">
@@ -31,12 +27,10 @@
             </form>
         </section>
 
-        <!-- Botão para adicionar um novo artista -->
         <section id="add-artista">
             <a href="/artistas/add" class="btn">Adicionar Novo Artista</a>
         </section>
 
-        <!-- Lista de Artistas -->
         <section id="artista-lista">
             <h2>Artistas Disponíveis:</h2>
             <div class="grid-container">
@@ -59,11 +53,6 @@
                 <% } %>
             </div>
         </section>
-    </main>
-    <script>
-        document.getElementById('back-button').addEventListener('click', function () {
-            window.history.back();
-        });
-    </script>   
+    </main> 
 </body>
 </html>

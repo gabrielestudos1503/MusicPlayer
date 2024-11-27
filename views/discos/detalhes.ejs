@@ -15,11 +15,8 @@
         <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back" onclick="window.location.href = '/discos';">
 
     </header>
-
     <main>
-        <!-- Container das duas caixas -->
         <div class="container">
-            <!-- Caixa da Esquerda: Informações Gerais -->
             <div class="info-box">
                 <% if (disco.capa) { %>
                     <img src="<%= disco.capa %>" alt="Capa do Disco" class="capa">
@@ -37,8 +34,6 @@
                 </p>
                 
             </div>
-
-            <!-- Caixa da Direita: Lista de Faixas -->
             <div class="faixas-box">
                 <h2>Faixas</h2>
                 <% if (disco.faixas && disco.faixas.length > 0) { %>
@@ -51,7 +46,6 @@
                     <p>Nenhuma faixa disponível.</p>
                 <% } %>
 
-                <!-- Botões -->
                 <div class="botoes">
                     <a href="/discos/<%= disco.id %>/edit" class="btn editar">Editar</a>
                     <form action="/discos/<%= disco.id %>/delete" method="POST" class="delete-form">

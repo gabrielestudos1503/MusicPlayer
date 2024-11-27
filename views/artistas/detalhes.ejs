@@ -7,19 +7,15 @@
     <link rel="stylesheet" href="/css/detalhesArtista.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <a href="/">
             <img src="/images/logo.png" alt="Logo do Catálogo Musical">
         </a>
-        <h1>Catálogo Musical</h1>
+        <h1>Detalhes do Artista</h1>
         <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back" onclick="window.location.href = '/artistas';">
     </header>
-
-    <!-- Main -->
     <main>
         <div class="details-container">
-            <!-- Box da Esquerda: Informações Gerais -->
             <div class="info-box">
                 <h2>Informações Gerais</h2>
                 <p><strong>Nome:</strong> <%= artista.nome %></p>
@@ -33,7 +29,6 @@
                 <p><strong>Número de Discos:</strong> <%= artista.discos.length %></p>
             </div>
 
-            <!-- Box da Direita: Discos -->
             <div class="discos-box">
                 <h2>Discos Associados</h2>
                 <% if (artista.discos && artista.discos.length > 0) { %>
@@ -50,7 +45,6 @@
                     <p>Nenhum disco associado.</p>
                 <% } %>
 
-                <!-- Botões -->
                 <div class="buttons">
                     <a href="/artistas/<%= artista.id %>/edit" class="btn editar">Editar</a>
                     <form action="/artistas/<%= artista.id %>/delete" method="POST" style="display:inline;">

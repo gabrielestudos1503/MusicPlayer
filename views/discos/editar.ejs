@@ -11,7 +11,7 @@
         <a href="/">
             <img src="/images/logo.png" alt="Logo do Catálogo Musical">
         </a>
-        <h1>Catálogo Musical</h1>
+        <h1>Editar Disco</h1>
         <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back">
     </header>
 
@@ -62,7 +62,6 @@
 
             <div>
                 <label>Faixas:</label>
-                <!-- Lista dinâmica de faixas adicionadas -->
                 <ul id="faixa-lista">
                     <% if (disco.faixas && disco.faixas.length > 0) { %>
                         <% disco.faixas.forEach((faixa, index) => { %>
@@ -75,7 +74,6 @@
                     <% } %>
                 </ul>
             
-                <!-- Campos para adicionar uma nova faixa -->
                 <div class="faixa-inputs">
                     <input type="text" id="faixa-titulo" placeholder="Título da faixa">
                     <input type="text" id="faixa-duracao" placeholder="Duração (mm:ss)">

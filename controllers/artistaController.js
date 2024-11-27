@@ -25,7 +25,7 @@ module.exports = {
             const artistas = await Artista.findAll({
                 where,
                 include: [
-                    { model: Genero, as: 'generos' }, // Associa os gêneros
+                    { model: Genero, as: 'generos' }, 
                     { model: Disco, as: 'discos' },
                 ],
             });
@@ -39,7 +39,7 @@ module.exports = {
     
     async adicionarArtistaForm(req, res) {
         try {
-            const generos = await Genero.findAll(); // Busca todos os gêneros para popular o formulário
+            const generos = await Genero.findAll(); 
             res.render('artistas/adicionar', { generos });
         } catch (error) {
             console.error('Erro ao carregar o formulário de adição de artista:', error);
@@ -51,10 +51,8 @@ module.exports = {
         try {
             const { nome, generoIds } = req.body;
     
-            // Cria o artista
             const artista = await Artista.create({ nome });
     
-            // Associa os gêneros ao artista
             if (generoIds) {
                 const generoArray = Array.isArray(generoIds) ? generoIds : [generoIds];
                 await artista.setGeneros(generoArray);
@@ -71,16 +69,14 @@ module.exports = {
         try {
             const { id } = req.params;
     
-            // Busca o artista pelo ID
             const artista = await Artista.findByPk(id, {
-                include: [{ model: Genero, as: 'generos' }], // Inclui os gêneros associados
+                include: [{ model: Genero, as: 'generos' }], 
             });
     
             if (!artista) {
                 return res.status(404).send('Artista não encontrado.');
             }
     
-            // Busca todos os gêneros para popular o formulário
             const generos = await Genero.findAll();
     
             res.render('artistas/editar', { artista, generos });
@@ -95,16 +91,13 @@ module.exports = {
             const { id } = req.params;
             const { nome, generoIds } = req.body;
     
-            // Busca o artista para edição
             const artista = await Artista.findByPk(id);
             if (!artista) {
                 return res.status(404).send('Artista não encontrado.');
             }
     
-            // Atualiza o nome do artista
             await artista.update({ nome });
     
-            // Atualiza os gêneros associados
             if (generoIds) {
                 const generoArray = Array.isArray(generoIds) ? generoIds : [generoIds];
                 await artista.setGeneros(generoArray);
@@ -121,14 +114,12 @@ module.exports = {
         try {
             const { id } = req.params;
     
-            // Busca o artista pelo ID
             const artista = await Artista.findByPk(id);
     
             if (!artista) {
                 return res.status(404).send('Artista não encontrado.');
             }
     
-            // Exclui o artista
             await artista.destroy();
     
             res.redirect('/artistas');
@@ -142,11 +133,10 @@ module.exports = {
         try {
             const { id } = req.params;
     
-            // Busca o artista pelo ID com associações
             const artista = await Artista.findByPk(id, {
                 include: [
-                    { model: Genero, as: 'generos' }, // Gêneros associados
-                    { model: Disco, as: 'discos' },  // Discos associados
+                    { model: Genero, as: 'generos' }, 
+                    { model: Disco, as: 'discos' },  
                 ],
             });
     
@@ -154,7 +144,6 @@ module.exports = {
                 return res.status(404).send('Artista não encontrado.');
             }
     
-            // Renderiza a view com os dados do artista
             res.render('artistas/detalhes', { artista });
         } catch (error) {
             console.error('Erro ao buscar detalhes do artista:', error);

@@ -89,8 +89,8 @@ form button:hover {
 }
 
 .checkbox-container {
-    max-height: 150px; /* Mostra no máximo 4 itens visíveis (30px cada) */
-    overflow-y: auto; /* Adiciona o scroll vertical */
+    max-height: 150px; 
+    overflow-y: auto; 
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;

@@ -1,7 +1,7 @@
 async function carregarRecentes(endpoint, containerId) {
     try {
-        const response = await fetch(endpoint); // Chama a rota de API
-        const data = await response.json(); // Recebe os dados
+        const response = await fetch(endpoint); 
+        const data = await response.json(); 
         const container = document.getElementById(containerId);
         data.forEach(item => {
             const li = document.createElement('li');

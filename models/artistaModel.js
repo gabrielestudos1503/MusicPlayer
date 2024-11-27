@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Artista.associate = function (models) {
         Artista.belongsToMany(models.Genero, {
-            through: 'ArtistaGeneros', // Nome da tabela intermediária
+            through: 'ArtistaGeneros', 
             as: 'generos',
             foreignKey: 'artistaId',
         });
@@ -22,6 +22,5 @@ module.exports = (sequelize, DataTypes) => {
         });
     };
     
-
     return Artista;
 };

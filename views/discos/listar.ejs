@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/css/listarDisco.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <a href="/">
             <img src="/images/logo.png" alt="Logo do Catálogo Musical">
@@ -16,10 +15,7 @@
         <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back" onclick="window.location.href = '/';">
 
     </header>
-
-    <!-- Main -->
     <main>
-        <!-- Seção de Pesquisa -->
         <section id="search">
             <h2>Pesquisar Discos</h2>
             <form action="/discos/search" method="GET">
@@ -33,12 +29,10 @@
             </form>
         </section>
 
-        <!-- Botão para adicionar um novo disco -->
         <section id="add-disco">
             <a href="/discos/add" class="btn">Adicionar Novo Disco</a>
         </section>
 
-        <!-- Grid de Discos -->
         <section id="disco-grid">
             <h2>Discos Disponíveis:</h2>
             <div class="grid-container">
@@ -64,8 +58,6 @@
                     <p>Nenhum disco encontrado.</p>
                 <% } %>
             </div>
-            
-            
         </section>
     </main> 
 </body>

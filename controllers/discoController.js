@@ -49,7 +49,6 @@ module.exports = {
             const capa = req.file ? `/uploads/${req.file.filename}` : null;
             console.log('Arquivo enviado:', req.file);
 
-            // Cria o disco
             const disco = await Disco.create({
                 titulo,
                 data,
@@ -57,16 +56,14 @@ module.exports = {
                 artistaId,
             });
     
-            // Associa os gêneros ao disco
             if (generoIds) {
                 await disco.setGeneros(generoIds);
             }
     
-            // Processa e adiciona as faixas
             if (faixas) {
-                const faixasArray = Array.isArray(faixas) ? faixas : [faixas]; // Garante que é um array
+                const faixasArray = Array.isArray(faixas) ? faixas : [faixas];
                 for (const faixa of faixasArray) {
-                    const faixaObj = JSON.parse(faixa); // Converte o valor JSON enviado
+                    const faixaObj = JSON.parse(faixa); 
                     await Faixa.create({
                         titulo: faixaObj.titulo,
                         duracao: faixaObj.duracao,
@@ -110,7 +107,6 @@ module.exports = {
         try {
             const { id } = req.params;
     
-            // Buscar o disco pelo ID
             const disco = await Disco.findByPk(id, {
                 include: [
                     { model: Artista, as: 'artista' },
@@ -123,7 +119,6 @@ module.exports = {
                 return res.status(404).send('Disco não encontrado.');
             }
     
-            // Buscar todos os artistas e gêneros para preencher as opções
             const artistas = await Artista.findAll();
             const generos = await Genero.findAll();
     
@@ -139,16 +134,13 @@ module.exports = {
             const { id } = req.params;
             const { titulo, data, artistaId, generoIds, faixas } = req.body;
     
-            // Buscar o disco para edição
             const disco = await Disco.findByPk(id);
             if (!disco) {
                 return res.status(404).send('Disco não encontrado.');
             }
     
-            // Atualizar a capa, se um novo arquivo foi enviado
             const capa = req.file ? `/uploads/${req.file.filename}` : disco.capa;
     
-            // Atualizar o disco
             await disco.update({
                 titulo,
                 data,
@@ -156,16 +148,14 @@ module.exports = {
                 artistaId,
             });
     
-            // Atualizar os gêneros
             if (generoIds) {
                 const generoArray = Array.isArray(generoIds) ? generoIds : [generoIds];
                 await disco.setGeneros(generoArray);
             }
     
-            // Atualizar as faixas
             if (faixas) {
                 const faixasArray = Array.isArray(faixas) ? faixas : [faixas];
-                await Faixa.destroy({ where: { discoId: id } }); // Remove faixas antigas
+                await Faixa.destroy({ where: { discoId: id } });
                 for (const faixa of faixasArray) {
                     const faixaObj = JSON.parse(faixa);
                     await Faixa.create({
@@ -202,7 +192,6 @@ module.exports = {
         try {
             const { id } = req.params;
     
-            // Buscar o disco pelo ID com associações
             const disco = await Disco.findByPk(id, {
                 include: [
                     { model: Artista, as: 'artista' },
@@ -215,7 +204,6 @@ module.exports = {
                 return res.status(404).send('Disco não encontrado.');
             }
     
-            // Renderizar a view com os dados do disco
             res.render('discos/detalhes', { disco });
         } catch (error) {
             console.error('Erro ao buscar detalhes do disco:', error);

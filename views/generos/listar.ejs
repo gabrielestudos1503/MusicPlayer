@@ -7,20 +7,15 @@
     <link rel="stylesheet" href="/css/listarGenero.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
             <a href="/">
                 <img src="/images/logo.png" alt="Logo do Catálogo Musical">
             </a>
-            <h1>Catálogo Musical</h1>
+            <h1>Lista de Generos</h1>
             <img id="back-button" src="/images/back.png" alt="Voltar" class="btn-back" onclick="window.location.href = '/';">
         
     </header>
-    
-
-    <!-- Main -->
     <main>
-        <!-- Seção de Pesquisa -->
         <section id="search">
             <h2>Pesquisar Gêneros</h2>
             <form action="/generos" method="GET">
@@ -29,12 +24,10 @@
             </form>
         </section>
 
-        <!-- Botão para adicionar um novo gênero -->
         <section id="add-genero">
             <a href="/generos/add" class="btn">Adicionar Novo Gênero</a>
         </section>
 
-        <!-- Lista de Gêneros -->
         <section id="genero-list">
             <h2>Gêneros Disponíveis</h2>
             <div class="grid-container">

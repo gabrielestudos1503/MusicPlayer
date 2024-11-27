@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'generoId',
         });
         Genero.belongsToMany(models.Artista, {
-            through: 'ArtistaGeneros', // Nome da tabela intermediária
+            through: 'ArtistaGeneros', 
             as: 'artistas',
             foreignKey: 'generoId',
         });

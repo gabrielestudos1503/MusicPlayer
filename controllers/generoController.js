@@ -21,12 +21,11 @@ module.exports = {
     
             const where = {};
             if (nome) {
-                // Adiciona um filtro pelo nome do gênero
                 where.nome = { [Sequelize.Op.iLike]: `%${nome}%` };
             }
     
             const generos = await Genero.findAll({ where });
-            res.render('generos/listar', { generos }); // Renderiza a página de lista com os gêneros encontrados
+            res.render('generos/listar', { generos }); 
         } catch (error) {
             console.error('Erro ao listar os gêneros:', error);
             res.status(500).send('Erro ao listar os gêneros.');
@@ -41,7 +40,6 @@ module.exports = {
         try {
             const { nome } = req.body;
     
-            // Cria o gênero
             await Genero.create({ nome });
     
             res.redirect('/generos');
@@ -55,7 +53,6 @@ module.exports = {
         try {
             const { id } = req.params;
     
-            // Busca o gênero pelo ID
             const genero = await Genero.findByPk(id);
     
             if (!genero) {
@@ -74,14 +71,12 @@ module.exports = {
             const { id } = req.params;
             const { nome } = req.body;
     
-            // Busca o gênero para edição
             const genero = await Genero.findByPk(id);
     
             if (!genero) {
                 return res.status(404).send('Gênero não encontrado.');
             }
     
-            // Atualiza o nome do gênero
             await genero.update({ nome });
     
             res.redirect(`/generos/${id}`);
@@ -112,7 +107,6 @@ module.exports = {
         try {
             const { id } = req.params;
     
-            // Buscar o gênero pelo ID, incluindo artistas e discos associados
             const genero = await Genero.findByPk(id, {
                 include: [
                     { model: Artista, as: 'artistas' },

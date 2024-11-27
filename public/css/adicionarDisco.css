@@ -92,8 +92,8 @@ form button:hover {
 }
 
 .checkbox-container {
-    max-height: 100px; /* Mostra no máximo 4 itens visíveis (30px cada) */
-    overflow-y: auto; /* Adiciona o scroll vertical */
+    max-height: 100px;
+    overflow-y: auto; 
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
@@ -106,8 +106,8 @@ form button:hover {
     margin: 0 0 10px 0;
     border: 1px solid #ddd;
     border-radius: 5px;
-    max-height: 150px; /* Altura máxima para a lista */
-    overflow-y: auto; /* Adiciona scroll quando necessário */
+    max-height: 150px;
+    overflow-y: auto; 
 }
 
 #faixa-lista li {
